@@ -178,7 +178,7 @@ sub usage
         print "-v                  : (OPTIONAL) Print verbose messages.\n";
         print "-f                  : (OPTIONAL) Map all files on the device specified by -d <dev> during 'trace' phase to their LBA ranges.\n";
         print "                       This is useful for determining the most fequently accessed files, but may take a while on really large filesystems\n";
-        print "-p                  : (OPTIONAL) Generate a .pdf output file in addition to STDOUT.  This requires 'pdflatex', 'gnuplot' and 'terminal png'\n";
+        print "-p                  : (OPTIONAL) Generate a .pdf output file in addition to STDOUT.  This requires 'pdflatex', 'gnuplot' and 'terminal pngcairo'\n";
         print "                       to be installed.\n";
         exit;
 } # sub usage
@@ -287,8 +287,8 @@ sub check_pdf_prereqs
         if ($? != 0) { die("ERROR: gnuplot not installed.  Please offload the trace file for processing."); }
         `which pdflatex`;
         if ($? != 0) { die("ERROR: pdflatex not installed.  Please offload the trace file for processing."); }
-        `echo 'set terminal png' > pngtest.txt; gnuplot pngtest.txt >/dev/null 2>&1`;
-        if ($? != 0) { `rm -f pngtest.txt`; die("ERROR: gnuplot PNG terminal not installed.  Please offload the trace file for processing."); }
+        `echo 'set terminal pngcairo' > pngtest.txt; gnuplot pngtest.txt >/dev/null 2>&1`;
+        if ($? != 0) { `rm -f pngtest.txt`; die("ERROR: gnuplot pngcairo terminal not installed.  Please offload the trace file for processing."); }
         `rm -f pngtest.txt`;
 }
 
