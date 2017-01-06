@@ -1756,7 +1756,7 @@ sub draw_heatmap
         print "cap=$cap vpc=$vpc pigeons=$pigeons holes=$holes rate=$rate max_bucket_hits=$max_bucket_hits\n" if($VERBOSE);
         $vpc = int($cap / $choices) ? int($cap / $choices) : 1; # values per choice
 
-        print "+" . "-" x $term_x . "-+\n";
+        print "+" . "-" x $term_x . "+\n";
         for(my $y=0; $y<$term_y; $y++)
         {
                 print "|";
@@ -1769,7 +1769,7 @@ sub draw_heatmap
                 }
                 print "${none}|\n";
         }
-        print "${none}+" . "-" x $term_x . "-+\n";
+        print "${none}+" . "-" x $term_x . "+\n";
 }
 
 sub worker
