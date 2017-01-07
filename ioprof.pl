@@ -311,7 +311,7 @@ sub mount_debugfs
                 print "Need to mount debugfs\n" if ($VERBOSE);
                 `mount -t debugfs debugfs /sys/kernel/debug`;
                 if($? !=0 ) { die("ERROR: Failed to mount debugfs"); }
-                print "mounted debugfs successfully\n" if ($VERBOSE);
+                print "mounted debugfs successfully\n";
         }
         return;
 }
