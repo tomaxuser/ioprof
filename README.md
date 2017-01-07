@@ -35,7 +35,7 @@ Requires the following tools:
 Optional PDF report requires:
 * gnuplot
 * pdf2latex
-* terminal png
+* terminal pngcairo
 
 Design
 ======

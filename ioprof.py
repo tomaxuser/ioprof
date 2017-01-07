@@ -157,7 +157,7 @@ def usage(g, argv):
 	print "-v                  : (OPTIONAL) Print verbose messages."
 	print "-f                  : (OPTIONAL) Map all files on the device specified by -d <dev> during 'trace' phase to their LBA ranges."
 	print "                       This is useful for determining the most fequently accessed files, but may take a while on really large filesystems"
-	print "-p                  : (OPTIONAL) Generate a .pdf output file in addition to STDOUT.  This requires 'pdflatex', 'gnuplot' and 'terminal png'"
+	print "-p                  : (OPTIONAL) Generate a .pdf output file in addition to STDOUT.  This requires 'pdflatex', 'gnuplot' and 'terminal pngcairo'"
 	print "                       to be installed."
 	sys.exit(-1)
 # usage (DONE)
@@ -281,7 +281,7 @@ def check_pdf_prereqs(g):
 		sys.exit(1)
 	else:
 		debug_print(g, "which pdflatex: rc=" + str(rc))
-	rc = os.system("echo 'set terminal png' > pngtest.txt; gnuplot pngtest.txt >/dev/null 2>&1")
+	rc = os.system("echo 'set terminal pngcairo' > pngtest.txt; gnuplot pngtest.txt >/dev/null 2>&1")
 	if rc != 0:
 		print "ERROR: gnuplot PNG terminal not installed.  Please offload the trace file for processing."
 		sys.exit(1)
