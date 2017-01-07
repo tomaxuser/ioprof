@@ -166,9 +166,9 @@ sub usage
         print "Invalid command\n\n";
         print @ARGV;
         print "Usage:\n";
-        print "$0 -m trace -d <dev> -r <runtime> [-v] [-f]   # run trace for post-processing later\n";
-        print "$0 -m post  -t <dev.tar file>     [-v] [-p]   # post-process mode\n";
-        print "$0 -m live  -d <dev> -r <runtime> [-v]        # live mode\n";
+        print "$0 -m trace -d <dev>  -r <runtime>  [-v] [-f]   # run trace for post-processing later\n";
+        print "$0 -m post  -t <dev.tar file>       [-v] [-p]   # post-process mode\n";
+        print "$0 -m live  -d <dev> [-r <runtime>] [-v]        # live mode\n";
         print "\nCommand Line Arguments:\n";
         print "-d <dev>            : The device to trace (e.g. /dev/sdb).  You can run traces to multiple devices (e.g. /dev/sda and /dev/sdb)\n";
         print "                      at the same time, but please only run 1 trace to a single device (e.g. /dev/sdb) at a time\n";
@@ -211,10 +211,10 @@ sub check_args
         if($mode eq 'live')
         {
                 # Check for invalid args
-                if(!$opt{'d'} || !$opt{'r'}) { usage(); }
+                if(!$opt{'d'}) { usage(); }
 
                 $dev = $opt{'d'};
-                $runtime = $opt{'r'};
+                $runtime = $opt{'r'} // 0;
                 print "Dev: $dev Runtime: $runtime\n" if ($DEBUG);
 
                 $live=1;
