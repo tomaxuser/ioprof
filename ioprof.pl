@@ -1824,9 +1824,12 @@ sub worker
 ### Check command line arguments
 check_args();
 
-### Check if debugfs is mounted
 if ($mode eq "live" || $mode eq "trace")
 {
+        ### Check if superuser permissions
+        if ($> != 0) { die("ERROR: You need to have superuser permissions to collect all necessary data.  Please run from a privileged account."); }
+
+        ### Check if debugfs is mounted
         mount_debugfs();
 }
 
@@ -1837,10 +1840,6 @@ if($mode eq 'trace')
         my $thread_count=0;
         my $pid=-1;
         #my $cpu_affinity=0;
-
-        ### Check if sudo permissions
-        `sudo -v`;
-        if($? != 0 ) { die("ERROR: You need to have sudo permissions to collect all necessary data.  Please run from a privilaged account."); }
 
         ### Save fdisk info
         print "Running fdisk\n" if ($DEBUG);
