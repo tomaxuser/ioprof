@@ -1863,7 +1863,7 @@ if($mode eq 'trace')
         {
                 my $percent = $thread_count * $timeout * 100 / $runtime;
                 my $time_left = $runcount * $timeout;
-                print "\r$percent % done ($time_left seconds left)    ";
+                printf "\r%6.2f %% done (%5d seconds left)", $percent, $time_left;
                 if ($cpu_affinity >= $cpu_count) { $cpu_affinity=0; }
                 if ($cpu_affinity == 0) { $cpu_affinity++; }
 
