@@ -210,6 +210,7 @@ sub check_args
 
         if($mode eq 'live')
         {
+                check_trace_prereqs();
                 # Check for invalid args
                 if(!$opt{'d'}) { usage(); }
 
