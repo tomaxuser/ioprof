@@ -215,7 +215,7 @@ sub check_args
                 if(!$opt{'d'}) { usage(); }
 
                 $dev = $opt{'d'};
-                $runtime = $opt{'r'} // 0;
+                $runtime = $opt{'r'} || 0;
                 print "Dev: $dev Runtime: $runtime\n" if ($DEBUG);
 
                 $live=1;
